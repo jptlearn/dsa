@@ -33,5 +33,8 @@ var mergeTwoLists = function (list1, list2) {
     }
     current = current.next;
   }
+  // Add the remaining nodes
+  current.next = list1 || list2;
+  return dummy.next;
 };
 // @lc code=end
