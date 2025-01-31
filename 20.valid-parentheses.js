@@ -16,5 +16,26 @@ var isValid = function (s) {
     "{": "}",
     "[": "]",
   };
+
+  // Stack to store the opening brackets
+  const stack = [];
+
+  for (let char of s) {
+    // If opening bracket, push to stack
+    if (brackets[char]) {
+      stack.push(char);
+    } else {
+      // If closing bracket
+      const lastBracket = stack.pop();
+
+      // Check if the matches corresponding opening bracket
+      if (brackets[lastBracket] !== char) {
+        return false;
+      }
+    }
+  }
+
+  // Valid if stack is empty
+  return stack.length === 0;
 };
 // @lc code=end
